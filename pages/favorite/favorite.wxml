@@ -1,0 +1,43 @@
+<view class="tab-header">
+    <view class="tab-header-item {{show == 'movie_favorite' ? 'tab-header-active' : ''}}" data-type="movie_favorite" bindtap="changeViewType">电影</view>
+    <view class="tab-header-item {{show == 'talk_favorite' ? 'tab-header-active' : ''}}" data-type="talk_favorite" bindtap="changeViewType">文章</view>
+</view>
+
+<view class="tab-content-item" hidden="{{show == 'movie_favorite' ? false : true}}">
+          <view class="movie-list">
+  <block class="movie-list-ul" wx:for="{{moviearray}}" wx:for-item="item" wx:key="*this">
+  <view class="movie-list-li" bindtap="jumpBtnMovie" data-postId='{{item.postId}}'>
+  <view class="item-top"><image src='{{item.img}}'></image></view>
+  <view class="item-bottom">
+    <view>{{item.title}}</view>
+    <text>{{item.score}}</text>
+  </view>
+</view>
+  </block>
+</view>
+</view>
+
+<view class="tab-content-item" hidden="{{show == 'talk_favorite' ? false : true}}">
+  <view>
+  <block wx:for="{{talkarray}}" wx:for-item="item" wx:key="*this">
+    <view catchtap='jumpBtnTalk' data-postId='{{item.postId}}'>
+      <view class='middle'>
+        <view class='author-date'>
+           <image class='author' src='{{item.avatar}}'></image>
+           <text class='date'>{{item.author}}</text>
+           <text class='date'>{{item.date}}</text>
+        </view>
+        <text class='title'>{{item.title}}</text>
+        <image class='post-image' src='{{item.imgSrc}}'></image>
+        <text class='content'>{{item.content}} </text>
+        <view class='like'>
+      <image class='like-image' src='/static/img/chat.png'></image>
+      <text class='like-font'>{{item.collection}}</text>
+      <image class='like-image' src='/static/img/view.png'></image>
+      <text class='like-font'>{{item.reading}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
+</view>

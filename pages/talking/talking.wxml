@@ -1,0 +1,22 @@
+<view>
+  <block wx:for="{{posts_key}}" wx:for-item="item" wx:key="*this">
+    <view catchtap='jumpBtn' data-postId='{{item.postId}}'>
+      <view class='middle'>
+        <view class='author-date'>
+           <image class='author' src='{{item.avatar}}'></image>
+           <text class='date'>{{item.author}}</text>
+           <text class='date'>{{item.date}}</text>
+        </view>
+        <text class='title'>{{item.title}}</text>
+        <image class='post-image' src='{{item.imgSrc}}'></image>
+        <text class='content'>{{item.content}} </text>
+        <view class='like'>
+      <image class='like-image' src='/static/img/chat.png'></image>
+      <text class='like-font'>{{item.collection}}</text>
+      <image class='like-image' src='/static/img/view.png'></image>
+      <text class='like-font'>{{item.reading}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

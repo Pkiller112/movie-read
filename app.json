@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/popular/popular",
+    "pages/talking/talking",
+    "pages/moviemore/moviemore",
+    "pages/talkingmore/talkingmore",
+    "pages/favorite/favorite"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#47a86c",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "电影推荐",
+    "backgroundColor": "#fff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+    "tabBar": {
+      "backgroundColor": "#ffffff",
+      "color": "#999999",
+      "list": [
+        {
+          "pagePath": "pages/popular/popular",
+          "text": "热映",
+          "iconPath": "pages/images/popular_icon.png",
+          "selectedIconPath": "pages/images/popular_active_icon.png"
+        },
+        {
+          "pagePath": "pages/talking/talking",
+          "text": "影评",
+          "iconPath": "pages/images/yuedu.png",
+          "selectedIconPath": "pages/images/yuedu_hl.png"
+        },
+        {
+          "pagePath": "pages/favorite/favorite",
+          "text": "收藏",
+          "iconPath": "pages/images/yuedu.png",
+          "selectedIconPath": "pages/images/yuedu_hl.png"
+        }
+      ]
+    },
+    "sitemapLocation": "sitemap.json"
+}

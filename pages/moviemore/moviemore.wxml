@@ -1,0 +1,36 @@
+<!--pages/moviemore/moviemore.wxml-->
+<view class="top">
+  <view class="top-background" style="background-image: url({{movieInfo.img}})"></view>
+    <image src="{{movieInfo.img}}" class="top-background-cover"></image>
+  <view class="top-content">
+    <view class="top-title">{{movieInfo.title}}</view>
+    <view class="top-txt">导演：{{movieInfo.director}}</view>
+    <view class="top-txt">演员：{{movieInfo.actor}}</view>
+    <view class="top-txt">豆瓣评分：
+      <block wx:if="{{movieInfo.score == 0}}">
+        暂无评分
+      </block>
+      <block wx:else>{{movieInfo.score}}分</block>
+    </view>
+    <view class="top-txt">上映年份：{{movieInfo.year}}年</view>
+  </view>
+  <view class="top-favorite {{collected ? 'top-favorite-active' : ''}}" bindtap="onColletionTap">收藏</view>
+</view>
+<view class="middle">
+  <view class="middle-item">
+    <view class="middle-item-num">{{movieInfo.saw_count}}</view>
+      <view class="middle-item-title">看过</view>
+  </view>
+  <view class="middle-item">
+    <view class="middle-item-num">{{movieInfo.want_count}}</view>
+      <view class="middle-item-title">想看</view>
+  </view>
+  <view class="middle-item">
+    <view class="middle-item-num">{{movieInfo.ratings_count}}</view>
+      <view class="middle-item-title">评分人数</view>
+  </view>
+</view>
+<view class="bottom">
+  <view class="bottom-title">剧情简介</view>
+  <view class="bottom-content">{{movieInfo.content}}</view>
+</view>

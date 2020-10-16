@@ -1,0 +1,32 @@
+@import '/pages/popular/popular.wxss';
+@import '/pages/talking/talking.wxss';
+.tab-header {
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: table;
+    width: 750rpx;
+    height: 80rpx;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    /* margin-bottom: 80prx; */
+}
+
+.tab-header-item {
+    display: table-cell;
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+}
+
+.tab-header-item:active {
+    background-color: #f8f8f8;
+}
+
+.tab-header-active {
+    border-bottom: 4rpx solid #47a86c;
+}
+.movie-list,.middle{
+  margin-top: 80rpx;
+}
