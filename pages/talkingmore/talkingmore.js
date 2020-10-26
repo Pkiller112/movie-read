@@ -3,6 +3,7 @@ var talksInfo = require('../../data/talkInfo.js');
 Page({
   data: {
     collected: false,
+    history:[]
   },
 
   onLoad: function (options) {
@@ -14,7 +15,7 @@ Page({
   })
   var postsCollected = wx.getStorageSync("posts_collected2");
   if (postsCollected) {
-    var postCollected = postsCollected[postId] //由模拟形式决定
+    var postCollected = postsCollected[postId] 
     this.setData({
       collected: postCollected
     })
@@ -24,10 +25,22 @@ Page({
     postsCollected[postId] = false;
     wx.setStorageSync("posts_collected2", postsCollected)
   }
+      // 历史
+      var historyslist = wx.getStorageSync("historys_list2");
+      if(!historyslist){
+        var history=this.data.history;
+        wx.setStorageSync('historys_list2', history);
+      }
+        for(var i=0;i<historyslist.length;i++){
+          if(historyslist[i]==postId)
+          historyslist.splice(i,1);
+        }
+        historyslist.unshift(postId);
+        console.log("history:"+historyslist);
+        wx.setStorageSync('historys_list2', historyslist);
  },
  onColletionTap: function (event) {
-  // this.getPostsCollectedSyc();//同步收藏存储
-  this.getPostsCollectedAsy();//异步收藏测试
+  this.getPostsCollectedAsy();
 },
 
 getPostsCollectedAsy: function () {
@@ -38,22 +51,17 @@ getPostsCollectedAsy: function () {
       var postsCollected = res.data;
       var postCollected = postsCollected[that.data.currentPostId];
 
-      // 收藏变成未收藏，未收藏变成收藏
       postCollected = !postCollected;
-      postsCollected[that.data.currentPostId] = postCollected;  //更新缓存
+      postsCollected[that.data.currentPostId] = postCollected;
 
-      // 吐司
       that.showToast(postsCollected, postCollected)
     },
   })
 },
 
-// 吐司
 showToast: function (postsCollected, postCollected) {
-  //更新文章是否的缓存值
   wx.setStorageSync('posts_collected2', postsCollected);
 
-  //更新数据绑定变量，从而实现切换图片
   this.setData({
     collected: postCollected
   })
@@ -63,8 +71,5 @@ showToast: function (postsCollected, postCollected) {
     duration: 800,
     icon: "success"
   })
-  // wx.removeStorageSync("key") //清除key值缓存
-  // wx.clearStorageSync();//清除所有缓存
 },
-
 })

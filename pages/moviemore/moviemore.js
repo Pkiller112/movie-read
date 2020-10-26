@@ -4,6 +4,7 @@ var app = getApp()
 Page({
   data: {
     collected: false,
+    history:[]
   },
   onLoad: function (options) {
     var postId = options.id;
@@ -17,7 +18,7 @@ Page({
     var postsCollected = wx.getStorageSync("posts_collected");
     console.log(postsCollected)
     if (postsCollected) {
-      var postCollected = postsCollected[postId] //由模拟形式决定
+      var postCollected = postsCollected[postId]
       this.setData({
         collected: postCollected
       })
@@ -27,12 +28,26 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync("posts_collected", postsCollected)
     }
-  },
-  onColletionTap: function (event) {
-    this.getPostsCollectedAsy();//异步收藏
+// 历史
+    var historyslist = wx.getStorageSync("historys_list");
+    if(!historyslist){
+      var history=this.data.history;
+      wx.setStorageSync('historys_list', history);
+    }
+      for(var i=0;i<historyslist.length;i++){
+        if(historyslist[i]==postId)
+        historyslist.splice(i,1);
+      }
+      historyslist.unshift(postId);
+      console.log("history:"+historyslist);
+      wx.setStorageSync('historys_list', historyslist);
+    
   },
 
-  // 异步收藏存储
+  onColletionTap: function (event) {
+    this.getPostsCollectedAsy();
+  },
+
   getPostsCollectedAsy: function () {
     var that = this;
     wx.getStorage({
@@ -41,21 +56,18 @@ Page({
         var postsCollected = res.data;
         var postCollected = postsCollected[that.data.currentPostId];
 
-        // 收藏变成未收藏，未收藏变成收藏
         postCollected = !postCollected;
-        postsCollected[that.data.currentPostId] = postCollected;  //更新缓存
+        postsCollected[that.data.currentPostId] = postCollected;  
 
-        // 吐司
         that.showToast(postsCollected, postCollected)
       },
     })
   },
 
-  // 吐司
+
   showToast: function (postsCollected, postCollected) {
     wx.setStorageSync('posts_collected', postsCollected);
 
-    //更新数据绑定变量，从而实现切换图片
     this.setData({
       collected: postCollected
     })
@@ -66,4 +78,5 @@ Page({
       icon: "success"
     })
   },
+
 })

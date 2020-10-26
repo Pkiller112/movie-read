@@ -1,0 +1,19 @@
+<block wx:if="{{pictures.length == 0}}">
+    <view class="null-tip">{{nullTip.tipText}}</view>
+    <block wx:if="{{nullTip.routeUrl == undefined}}">
+        <view bindtap="{{nullTip.fn}}" class="null-action">{{nullTip.actionText}}</view>
+    </block>
+    <block wx:else>
+        <navigator url="{{nullTip.routeUrl}}" class="null-action">{{nullTip.actionText}}</navigator>
+    </block>
+</block>
+<block wx:else>
+    <view class="photo">
+        <block wx:for="{{pictures}}" wx:for-item="picturesItem" wx:for-index="picturesIndex" wx:key="pictures">
+            <view class="photo-item">
+                <image class="photo-item-cover" src="{{picturesItem}}" mode="aspectFill" data-index="{{picturesIndex}}" bindtap="previewImage"></image>
+            </view>
+        </block>
+    </view>
+    <view bindtap="uploadImg" class="null-action">上传</view>
+</block>

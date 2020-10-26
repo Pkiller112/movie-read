@@ -4,7 +4,12 @@
     "pages/talking/talking",
     "pages/moviemore/moviemore",
     "pages/talkingmore/talkingmore",
-    "pages/favorite/favorite"
+    "pages/favorite/favorite",
+    "pages/my/my",
+    "pages/history/history",
+    "pages/photo/photo",
+    "pages/skin/skin"
+
   ],
   "window": {
     "navigationBarBackgroundColor": "#47a86c",
@@ -31,10 +36,10 @@
           "selectedIconPath": "pages/images/yuedu_hl.png"
         },
         {
-          "pagePath": "pages/favorite/favorite",
-          "text": "收藏",
-          "iconPath": "pages/images/yuedu.png",
-          "selectedIconPath": "pages/images/yuedu_hl.png"
+          "pagePath": "pages/my/my",
+          "text": "我的",
+          "iconPath": "pages/images/ciwei.png",
+          "selectedIconPath": "pages/images/ciwei_hl.png"
         }
       ]
     },

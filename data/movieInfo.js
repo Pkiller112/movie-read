@@ -1,6 +1,6 @@
 var movieInfo = [
   {
-    img:'/static/img/gunlun2.jpg',
+    img:'/static/img/gunlun2.png',
     title:'白蛇：缘起',
     director:["黄家康","赵霁"],
     actor:["张喆","杨天翔","唐小喜","刘紫玲"],
@@ -27,7 +27,7 @@ var movieInfo = [
   },
   {
     img:'/static/img/gunlun4.jpg',
-    title:'星球大战9：天行者崛起',
+    title:'星球大战9',
     director:["J·J·艾布拉姆斯"],
     actor:["黛西·雷德利","亚当·德赖弗","奥斯卡·伊萨克"],
     score:'6.3',
